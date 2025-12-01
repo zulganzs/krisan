@@ -1,8 +1,8 @@
 # EcoWater - Sistem Manajemen Utilitas Air Lokal
 
-EcoWater adalah aplikasi web modern dwibahasa (Inggris/Indonesia) untuk mengelola utilitas air lokal. Aplikasi ini memungkinkan pengguna melihat tarif, mensimulasikan tagihan, dan mengelola penggunaan air mereka, sambil menyediakan alat bagi administrator untuk mengawasi sistem.
+EcoWater adalah aplikasi web modern untuk mengelola utilitas air lokal. Aplikasi ini memungkinkan pengguna melihat tarif, mensimulasikan tagihan, dan mengelola penggunaan air mereka, sambil menyediakan alat bagi administrator untuk mengawasi sistem.
 
-![Halaman Utama EcoWater](file:///C:/Users/omega/.gemini/antigravity/brain/8ff04338-ac31-4d72-939f-6c86604b98b0/landing_page_1764527364100.png)
+![Halaman Utama EcoWater](https://via.placeholder.com/800x400?text=EcoWater+Dashboard)
 
 ## Fitur
 
@@ -22,7 +22,9 @@ Sebelum memulai, pastikan Anda telah menginstal:
 -   **Node.js** & **NPM**
 -   **MySQL**
 
-## Instalasi
+## Mulai Cepat
+
+Anda dapat menyiapkan proyek dengan cepat menggunakan skrip composer yang disertakan:
 
 1.  **Kloning repositori:**
     ```bash
@@ -30,22 +32,42 @@ Sebelum memulai, pastikan Anda telah menginstal:
     cd pdam
     ```
 
-2.  **Instal dependensi PHP:**
+2.  **Jalankan skrip pengaturan:**
+    Perintah ini menginstal dependensi, menyiapkan file lingkungan, menghasilkan kunci aplikasi, menjalankan migrasi, dan membangun aset frontend.
+    ```bash
+    composer run setup
+    ```
+
+3.  **Mulai server pengembangan:**
+    Perintah ini menjalankan server Laravel, pendengar antrean, dan server pengembangan Vite secara bersamaan.
+    ```bash
+    composer run dev
+    ```
+
+    Akses aplikasi di [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+---
+
+## Instalasi Manual
+
+Jika Anda lebih suka menyiapkan proyek secara manual, ikuti langkah-langkah berikut:
+
+1.  **Instal dependensi PHP:**
     ```bash
     composer install
     ```
 
-3.  **Instal dependensi Node.js:**
+2.  **Instal dependensi Node.js:**
     ```bash
     npm install
     ```
 
-4.  **Pengaturan Lingkungan:**
-    Salin file `.env.example` ke `.env`:
+3.  **Pengaturan Lingkungan:**
+    Salin file contoh lingkungan dan konfigurasikan kredensial database Anda:
     ```bash
     cp .env.example .env
     ```
-    Perbarui file `.env` dengan kredensial database Anda:
+    Edit `.env` dan perbarui pengaturan database:
     ```env
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -55,53 +77,48 @@ Sebelum memulai, pastikan Anda telah menginstal:
     DB_PASSWORD=
     ```
 
-5.  **Hasilkan Kunci Aplikasi:**
+4.  **Hasilkan Kunci Aplikasi:**
     ```bash
     php artisan key:generate
     ```
 
-6.  **Jalankan Migrasi dan Seeder:**
-    Ini akan menyiapkan tabel database dan mengisinya dengan data awal (termasuk tarif dan pengguna admin).
+5.  **Jalankan Migrasi dan Seeder:**
+    Ini menyiapkan tabel database dan mengisinya dengan data awal (tarif, pengguna admin).
     ```bash
     php artisan migrate --seed
     ```
 
-7.  **Bangun Aset Frontend:**
+6.  **Bangun Aset Frontend:**
     ```bash
     npm run build
     ```
 
-## Menjalankan Aplikasi
-
-1.  **Mulai server pengembangan lokal:**
+7.  **Jalankan Aplikasi:**
     ```bash
     php artisan serve
     ```
 
-2.  **Akses aplikasi:**
-    Buka browser Anda dan kunjungi [http://127.0.0.1:8000](http://127.0.0.1:8000).
+## Menjalankan Pengujian
 
-## Kredensial Pengujian
+Untuk menjalankan pengujian otomatis:
+
+```bash
+php artisan test
+```
+
+## Kredensial Default
 
 **Akun Admin:**
 -   **Email:** `admin@ecowater.local`
 -   **Kata Sandi:** `password`
 
 **Pengguna Biasa:**
--   Anda dapat mendaftarkan akun baru melalui tautan "Daftar" di kanan atas.
-
-## Fungsionalitas Utama
-
--   **Pengalih Bahasa:** Klik tombol "EN" atau "ID" di bilah navigasi atas untuk mengganti bahasa.
--   **Simulator Tagihan:** Navigasi ke "Kalkulator Tagihan" untuk memperkirakan biaya.
-    -   *Contoh:* Sebelumnya: 100, Saat Ini: 115 -> Pemakaian: 15m³ (Tarif Tingkat 2 diterapkan).
--   **Halaman Tarif:** Lihat tingkat harga saat ini di "Tarif & Harga".
+-   Anda dapat mendaftarkan akun baru melalui tautan "Daftar" di pojok kanan atas.
 
 ## Pemecahan Masalah
 
--   **Pengalih Bahasa Mengalihkan Secara Tidak Benar:** Jika mengklik tombol bahasa mengalihkan Anda secara tidak terduga, coba navigasi manual kembali ke halaman yang diinginkan. Pengaturan bahasa harus tetap ada.
--   **Kesalahan Halaman Tarif:** Jika Anda menemukan kesalahan "Malformed @foreach", coba mulai ulang server (`Ctrl+C` lalu `php artisan serve`) untuk membersihkan cache tampilan.
-
-## Lisensi
-
-Kerangka kerja Laravel adalah perangkat lunak sumber terbuka yang dilisensikan di bawah [lisensi MIT](https://opensource.org/licenses/MIT).
+-   **Masalah Pengalih Bahasa:** Jika mengklik tombol bahasa mengalihkan secara tidak terduga, coba navigasi manual kembali ke halaman yang diinginkan.
+-   **Kesalahan Tampilan (View Errors):** Jika Anda menemukan kesalahan tampilan, coba bersihkan cache tampilan:
+    ```bash
+    php artisan view:clear
+    ```
