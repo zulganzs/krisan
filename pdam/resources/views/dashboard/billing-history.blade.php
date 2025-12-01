@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($bills as $bill)
+                        @foreach ($bills as $bill)
                             <tr>
                                 <td>{{ $bill->billing_month->format('F Y') }}</td>
                                 <td>{{ $bill->formatted_usage }}</td>

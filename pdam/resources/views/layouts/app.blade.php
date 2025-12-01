@@ -181,5 +181,40 @@
             });
         }
     </script>
+    <!-- Toast Notification -->
+    <div x-data="{ show: false, message: '', type: 'info' }" 
+         @notify.window="show = true; message = $event.detail.message; type = $event.detail.type || 'info'; setTimeout(() => show = false, 3000)"
+         x-show="show"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 transform translate-y-2"
+         x-transition:enter-end="opacity-100 transform translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 transform translate-y-0"
+         x-transition:leave-end="opacity-0 transform translate-y-2"
+         class="fixed bottom-4 right-4 z-50 pointer-events-none"
+         style="display: none;">
+        
+        <div class="pointer-events-auto rounded-lg shadow-lg p-4 min-w-[300px]"
+             :class="{
+                'bg-green-500 text-white': type === 'success',
+                'bg-red-500 text-white': type === 'error',
+                'bg-blue-500 text-white': type === 'info',
+                'bg-gray-800 text-white': type === 'warning'
+             }">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <span x-show="type === 'success'" class="mr-2">✓</span>
+                    <span x-show="type === 'error'" class="mr-2">✕</span>
+                    <span x-show="type === 'info'" class="mr-2">ℹ</span>
+                    <span x-text="message" class="font-medium"></span>
+                </div>
+                <button @click="show = false" class="ml-4 text-white hover:text-gray-200 focus:outline-none">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

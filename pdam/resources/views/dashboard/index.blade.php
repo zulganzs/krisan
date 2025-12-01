@@ -43,9 +43,17 @@
     <div class="card">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">{{ __('messages.recent_bills') }}</h2>
-            <a href="{{ route('billing-history') }}" class="text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300">
-                {{ __('messages.view') }} All →
-            </a>
+            @if($totalBills > 0)
+                <a href="{{ route('billing-history') }}" class="text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300">
+                    {{ __('messages.view') }} All →
+                </a>
+            @else
+                <button type="button" 
+                        onclick="window.dispatchEvent(new CustomEvent('notify', { detail: { message: 'No billing history yet', type: 'info' } }))"
+                        class="text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 cursor-pointer">
+                    {{ __('messages.view') }} All →
+                </button>
+            @endif
         </div>
         
         @if($bills->count() > 0)
@@ -60,7 +68,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($bills as $bill)
+                        @foreach ($bills as $bill)
                             <tr>
                                 <td>{{ $bill->billing_month->format('M Y') }}</td>
                                 <td>{{ $bill->formatted_usage }}</td>

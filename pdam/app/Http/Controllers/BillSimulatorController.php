@@ -45,7 +45,7 @@ class BillSimulatorController extends Controller
         $golongan = \App\Models\GolonganTarif::find($kodeGolongan);
         $baseRate = $golongan->harga_per_m3;
         $bebanTetap = $golongan->beban_tetap;
-        $biayaAdmin = 2500; // Fixed admin fee
+        $biayaAdmin = 2500;
 
         // Progressive Logic
         // 0-10 m3: Base Rate
