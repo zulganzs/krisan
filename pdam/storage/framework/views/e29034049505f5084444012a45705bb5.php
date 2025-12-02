@@ -27,24 +27,24 @@
                 </div>
 
                 <!-- Navigation Links (Desktop) -->
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="<?php echo e(route('home')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="<?php echo e(route('home')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         <?php echo e(__('messages.home')); ?>
 
                     </a>
-                    <a href="<?php echo e(route('about')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="<?php echo e(route('about')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         <?php echo e(__('messages.about')); ?>
 
                     </a>
-                    <a href="<?php echo e(route('tariff')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="<?php echo e(route('tariff')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         <?php echo e(__('messages.tariff')); ?>
 
                     </a>
-                    <a href="<?php echo e(route('bill-simulator')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="<?php echo e(route('bill-simulator')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         <?php echo e(__('messages.bill_simulator')); ?>
 
                     </a>
-                    <a href="<?php echo e(route('contact')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="<?php echo e(route('contact')); ?>" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         <?php echo e(__('messages.contact')); ?>
 
                     </a>

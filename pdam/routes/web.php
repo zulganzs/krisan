@@ -32,6 +32,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // User Bill Creation
+    Route::get('/bills/create', [\App\Http\Controllers\User\BillController::class, 'create'])->name('bills.create');
+    Route::post('/bills', [\App\Http\Controllers\User\BillController::class, 'store'])->name('bills.store');
 });
 
 // Admin routes
@@ -39,4 +43,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
     Route::resource('tariffs', \App\Http\Controllers\Admin\TariffController::class);
     Route::resource('complaints', \App\Http\Controllers\Admin\ComplaintController::class)->only(['index', 'show', 'update']);
+    Route::resource('announcements', \App\Http\Controllers\Admin\AnnouncementController::class);
+    Route::resource('bills', \App\Http\Controllers\Admin\BillController::class);
 });

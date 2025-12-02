@@ -28,7 +28,7 @@
     <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-8"><?php echo e(__('pages.latest_announcements')); ?></h2>
     
     <?php if($announcements->count() > 0): ?>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 gap-6">
             <?php $__currentLoopData = $announcements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $announcement): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="card fade-in-up">
                     <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3"><?php echo e($announcement->title); ?></h3>

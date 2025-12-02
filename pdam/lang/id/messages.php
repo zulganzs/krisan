@@ -66,7 +66,7 @@ return [
     
     // Bill Simulator page
     'enter_readings' => 'Masukkan pencatatan meter Anda untuk menghitung tagihan',
-    'how_it_works' => 'Bagaimana cara kerja harga bertingkat?',
+    'how_it_works' => 'Bagaimana cara kerja tarif?',
     'tier_1_desc' => '0-10 m³: Rp 2.000/m³ (Tingkat hemat - tarif terendah)',
     'tier_2_desc' => '10-20 m³: Rp 3.000/m³ (Tingkat pemakaian normal)',
     'tier_3_desc' => '20+ m³: Rp 5.000/m³ (Tingkat pemakaian tinggi - mendorong penghematan)',

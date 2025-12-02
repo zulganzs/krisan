@@ -15,8 +15,9 @@ class UserDashboardController extends Controller
         $bills = $user->bills()->latest('billing_month')->take(5)->get();
         $totalBills = $user->bills()->count();
         $unpaidBills = $user->bills()->where('status', 'unpaid')->count();
+        $announcements = \App\Models\Announcement::active()->latest()->get();
 
-        return view('dashboard.index', compact('user', 'bills', 'totalBills', 'unpaidBills'));
+        return view('dashboard.index', compact('user', 'bills', 'totalBills', 'unpaidBills', 'announcements'));
     }
 
     /**

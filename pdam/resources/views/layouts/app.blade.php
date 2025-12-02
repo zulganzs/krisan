@@ -27,20 +27,20 @@
                 </div>
 
                 <!-- Navigation Links (Desktop) -->
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="{{ route('home') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="{{ route('home') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         {{ __('messages.home') }}
                     </a>
-                    <a href="{{ route('about') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="{{ route('about') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         {{ __('messages.about') }}
                     </a>
-                    <a href="{{ route('tariff') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="{{ route('tariff') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         {{ __('messages.tariff') }}
                     </a>
-                    <a href="{{ route('bill-simulator') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="{{ route('bill-simulator') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         {{ __('messages.bill_simulator') }}
                     </a>
-                    <a href="{{ route('contact') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium">
+                    <a href="{{ route('contact') }}" class="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 px-3 py-2 text-sm font-medium whitespace-nowrap">
                         {{ __('messages.contact') }}
                     </a>
                 </div>
