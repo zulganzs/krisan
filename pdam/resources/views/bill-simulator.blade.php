@@ -50,7 +50,7 @@
                     </label>
                     <input type="number" 
                            name="admin_fee" 
-                           value="{{ old('admin_fee', 5000) }}" 
+                           value="{{ old('admin_fee', $admin_fee ?? 2500) }}" 
                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 dark:bg-gray-700 dark:text-white">
                 </div>
 
@@ -73,13 +73,8 @@
                     </div>
                     
                     <div class="flex justify-between items-center pb-3 border-b border-sky-200 dark:border-sky-700">
-                        <span class="text-gray-700 dark:text-gray-300">{{ __('messages.rate_applied') }}:</span>
-                        <span class="font-semibold text-gray-900 dark:text-white">Rp {{ number_format($result['rate'], 0, ',', '.') }}/m³</span>
-                    </div>
-                    
-                    <div class="flex justify-between items-center pb-3 border-b border-sky-200 dark:border-sky-700">
                         <span class="text-gray-700 dark:text-gray-300">{{ __('messages.base_cost') }}:</span>
-                        <span class="font-semibold text-gray-900 dark:text-white">Rp {{ number_format($result['base_cost'], 0, ',', '.') }}</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Rp {{ number_format($result['water_cost'], 0, ',', '.') }}</span>
                     </div>
                     
                     <div class="flex justify-between items-center pb-3 border-b border-sky-200 dark:border-sky-700">
@@ -95,7 +90,7 @@
                 
                 <div class="mt-6 p-4 bg-white dark:bg-gray-700 rounded-lg">
                     <p class="text-sm text-gray-600 dark:text-gray-400">
-                        <strong>{{ __('messages.formula') }}:</strong> ({{ number_format($result['usage'], 2) }} m³ × Rp {{ number_format($result['rate'], 0, ',', '.') }}) + Rp {{ number_format($result['admin_fee'], 0, ',', '.') }}
+                        <strong>{{ __('messages.formula') }}:</strong> Rp {{ number_format($result['water_cost'], 0, ',', '.') }} (Water) + Rp {{ number_format($result['admin_fee'], 0, ',', '.') }} (Admin)
                     </p>
                 </div>
             @else

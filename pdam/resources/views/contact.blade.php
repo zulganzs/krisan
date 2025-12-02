@@ -8,7 +8,7 @@
     <p class="text-gray-600 dark:text-gray-400 mb-8">{{ __('pages.contact_subtitle') }}</p>
     
     <div class="card">
-        <form method="POST" action="#" class="space-y-4">
+        <form method="POST" action="{{ route('contact.store') }}" class="space-y-4">
             @csrf
             
             <div>

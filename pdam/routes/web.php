@@ -16,6 +16,7 @@ Route::get('/locale/{locale}', [LocaleController::class, 'set'])->name('locale.s
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 Route::get('/tariff', [TariffController::class, 'index'])->name('tariff');
 Route::get('/bill-simulator', [BillSimulatorController::class, 'index'])->name('bill-simulator');
 Route::post('/bill-simulator', [BillSimulatorController::class, 'calculate'])->name('bill-simulator.calculate');
@@ -36,4 +37,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+    Route::resource('tariffs', \App\Http\Controllers\Admin\TariffController::class);
+    Route::resource('complaints', \App\Http\Controllers\Admin\ComplaintController::class)->only(['index', 'show', 'update']);
 });

@@ -1,0 +1,99 @@
+
+
+<?php $__env->startSection('title', __('messages.dashboard')); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-8"><?php echo e(__('messages.welcome')); ?>, <?php echo e($user->name); ?>!</h1>
+    
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="card bg-sky-50 dark:bg-sky-900/30">
+            <div class="flex items-center">
+                <div class="text-sky-600 dark:text-sky-400 text-4xl mr-4">👤</div>
+                <div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400"><?php echo e(__('messages.customer_id')); ?></p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-white"><?php echo e($user->customer_id ?? 'N/A'); ?></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card bg-green-50 dark:bg-green-900/30">
+            <div class="flex items-center">
+                <div class="text-green-600 dark:text-green-400 text-4xl mr-4">📊</div>
+                <div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400"><?php echo e(__('messages.total_bills')); ?></p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-white"><?php echo e($totalBills); ?></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card bg-red-50 dark:bg-red-900/30">
+            <div class="flex items-center">
+                <div class="text-red-600 dark:text-red-400 text-4xl mr-4">⚠️</div>
+                <div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400"><?php echo e(__('messages.unpaid_bills')); ?></p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-white"><?php echo e($unpaidBills); ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Bills -->
+    <div class="card">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white"><?php echo e(__('messages.recent_bills')); ?></h2>
+            <?php if($totalBills > 0): ?>
+                <a href="<?php echo e(route('billing-history')); ?>" class="text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300">
+                    <?php echo e(__('messages.view')); ?> All →
+                </a>
+            <?php else: ?>
+                <button type="button" 
+                        onclick="window.dispatchEvent(new CustomEvent('notify', { detail: { message: 'No billing history yet', type: 'info' } }))"
+                        class="text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 cursor-pointer">
+                    <?php echo e(__('messages.view')); ?> All →
+                </button>
+            <?php endif; ?>
+        </div>
+        
+        <?php if($bills->count() > 0): ?>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th><?php echo e(__('messages.usage')); ?></th>
+                            <th><?php echo e(__('messages.total_cost')); ?></th>
+                            <th><?php echo e(__('messages.status')); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $__currentLoopData = $bills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bill): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><?php echo e($bill->billing_month->format('M Y')); ?></td>
+                                <td><?php echo e($bill->formatted_usage); ?></td>
+                                <td><?php echo e($bill->formatted_total); ?></td>
+                                <td>
+                                    <span class="px-3 py-1 rounded-full text-xs font-semibold
+                                        <?php echo e($bill->status == 'paid' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : ''); ?>
+
+                                        <?php echo e($bill->status == 'unpaid' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300' : ''); ?>
+
+                                        <?php echo e($bill->status == 'overdue' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300' : ''); ?>">
+                                        <?php echo e(__('messages.'.$bill->status)); ?>
+
+                                    </span>
+                                </td>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php else: ?>
+            <p class="text-center py-8 text-gray-600 dark:text-gray-400">No billing history yet.</p>
+        <?php endif; ?>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\omega\Desktop\krisan\pdam\resources\views/dashboard/index.blade.php ENDPATH**/ ?>
